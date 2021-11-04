@@ -1,9 +1,15 @@
+import { SearchBox } from './components/SearchBox'
 import styles from './styles/App.module.scss'
 
 export function App() {
 
   return (
-    <div className={styles.contentWrapper}>Hello World!</div>
+    <div className={styles.contentWrapper}>
+      <h1>Temperatura local</h1>
+
+      <SearchBox/>
+
+    </div>
   )
 }
 

@@ -1,0 +1,38 @@
+.content{
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+
+  .contentWrapperSearch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .txtBusca{
+      width: 400px;
+      height: 30px;
+      padding: 4px;
+      border: none;
+      box-shadow: 0 0 20px #cccccc;
+    }
+  
+    .btSearch{
+      margin-left: 15px;
+      width: 50px;
+      height: 30px;
+      border: none;
+      background: #cccccc;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  }
+
+  .contentItems{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+}
