@@ -2,11 +2,70 @@
   background-color: #e7e4e4;
   margin-top: 20px;
   padding-top:20px;
-  height: 400px;
+  height: 460px;
   text-align: center;
 
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .items{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  .btnPlayList{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    width: 130px;
+    height: 50px;
+    border: none;
+    background: #cccccc;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .listMusic{
+    list-style: none;
+    font-size:20px;
+    text-align: justify;
+    margin-top:10px;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+    width: 70%;
+    height:30%;
+
+    a{
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  .contentSalve{
+    margin-top: 20px;
+    width: 70%;
+    display:flex;
+    justify-content: space-between;
+  
+    .salveList{
+      text-decoration: none;
+      color: black;
+      display:inline-block;
+    } 
+
+    .btnSalve{
+      display: inline;
+    } 
+  }
+ 
+  }
+  
   
 }
+
+
+

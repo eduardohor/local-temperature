@@ -6,20 +6,8 @@ export function SearchBox() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [sound, setSound] = useState("");
-  const [test, setTest] = useState([]);
-
-  const SAVED_ITEMS = "savedItems";
-
-  useEffect(() => {
-    let saveItems = JSON.parse(localStorage.getItem(SAVED_ITEMS));
-    if (saveItems) {
-      setTest(saveItems);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem(SAVED_ITEMS, JSON.stringify(weather));
-  }, [weather]);
+  const [search, setSearch] = useState("");
+  const [tracks, setTracks] = useState([]);
 
   function handleChange(event) {
     let t = event.target.value;
@@ -30,6 +18,7 @@ export function SearchBox() {
     event.preventDefault();
     if (city) {
       weatherForecast();
+
       setCity("");
     }
   }
@@ -47,56 +36,25 @@ export function SearchBox() {
         setWeather(data);
         testTemperature(data);
       });
-
-    testando();
   }
 
   function testTemperature(temp) {
     let tempCurrent = temp.main.temp;
-    let textSound;
+    // let textSound;
 
-    if (tempCurrent > 32) {
-      textSound = "um Rock";
+    if (tempCurrent >= 32) {
+      setSound("um Rock");
+      setTracks(484129036);
     } else if (tempCurrent < 32 && tempCurrent >= 24) {
-      textSound = "um Pop";
+      setSound("um Pop");
+      setTracks(44494086);
     } else if (tempCurrent < 24 && tempCurrent >= 16) {
-      textSound = "uma música Clássica";
+      setSound("uma música Clássica");
+      setTracks(55157283);
     } else if (tempCurrent < 16) {
-      textSound = "um Lofi";
+      setSound("um Lofi");
+      setTracks(77278082);
     }
-
-    setSound(textSound);
-  }
-
-  function listMusic() {
-    fetch(
-      `https://shazam.p.rapidapi.com/songs/list-recommendations?key=484129036&locale=en-US`,
-      {
-        method: "GET",
-        headers: {
-          "x-rapidapi-host": "shazam.p.rapidapi.com",
-          "x-rapidapi-key":
-            "e38d45c4aemsh52ec5ba560429efp147498jsn379a570fa42c",
-        },
-      }
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let mapear = data.tracks;
-        for (var i = 0; i < mapear.length; i++) {
-          console.log(mapear[i].title, mapear[i].url);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-
-  function testando() {
-    let mapear = [1, 2, 3, 4, 5];
-    setTest(mapear);
   }
 
   return (
@@ -120,7 +78,7 @@ export function SearchBox() {
           </button>
         </div>
 
-        <Result weather={weather} sound={sound} test={test} />
+        <Result weather={weather} sound={sound} tracks={tracks} />
       </form>
     </div>
   );
