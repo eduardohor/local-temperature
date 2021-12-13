@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { BsFileEarmarkMusic } from "react-icons/bs";
 
+const SAVED_ITEMS = "savedItems";
+
 function Result(props) {
   const [music, setMusic] = useState([]);
+  const [showList, setShowList] = useState(false);
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    let savedItems = JSON.parse(localStorage.getItem(SAVED_ITEMS));
+    if (savedItems) {
+      setItems(savedItems);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(SAVED_ITEMS, JSON.stringify(items));
+  }, [items]);
 
   function searchPlayList(event) {
     event.preventDefault();
@@ -22,7 +38,17 @@ function Result(props) {
       .then((data) => {
         let track = data.tracks;
         setMusic(track);
+        setShowList(true);
       });
+  }
+
+  function salvedList(event) {
+    event.preventDefault();
+    setItems(
+      music.map((result) => {
+        return "Url: " + result.url + " Título: " + result.title;
+      })
+    );
   }
 
   return (
@@ -48,12 +74,17 @@ function Result(props) {
               );
             })}
           </ul>
-          <div className={styles.contentSalve}>
-            <a className={styles.salveList} href="">
-              Listas Salvas
-            </a>
-            <button className={styles.btnSalve}>Salvar lista</button>
-          </div>
+          {showList ? (
+            <div className={styles.contentSalve}>
+              <Link to="list-music" className={styles.salveList}>
+                Listas Salvas
+              </Link>
+
+              <button className={styles.btnSalve} onClick={salvedList}>
+                Salvar dados
+              </button>
+            </div>
+          ) : null}
         </div>
       ) : null}
     </div>
