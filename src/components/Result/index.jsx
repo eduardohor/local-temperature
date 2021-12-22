@@ -44,11 +44,19 @@ function Result(props) {
 
   function salvedList(event) {
     event.preventDefault();
-    setItems(
-      music.map((result) => {
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth();
+    let ano = today.getFullYear();
+
+    let dados = {
+      temperatura: Math.round(props.weather.main.temp),
+      music: music.map((result) => {
         return "Url: " + result.url + " Título: " + result.title;
-      })
-    );
+      }),
+      today: day + "/" + month + "/" + ano,
+    };
+    setItems(dados);
   }
 
   return (
