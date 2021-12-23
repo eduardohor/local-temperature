@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
 import { BsFileEarmarkMusic } from "react-icons/bs";
-
-const SAVED_ITEMS = "savedItems";
+import { ItemsContext } from "../Context/index";
+import { MusicPlayer } from "../MusicPlayer/index";
 
 function Result(props) {
   const [music, setMusic] = useState([]);
   const [showList, setShowList] = useState(false);
-  const [items, setItems] = useState([]);
 
-  useEffect(() => {
-    let savedItems = JSON.parse(localStorage.getItem(SAVED_ITEMS));
-    if (savedItems) {
-      setItems(savedItems);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem(SAVED_ITEMS, JSON.stringify(items));
-  }, [items]);
+  const [items, setItems] = useContext(ItemsContext);
 
   function searchPlayList(event) {
     event.preventDefault();
@@ -56,7 +46,8 @@ function Result(props) {
       }),
       today: day + "/" + month + "/" + ano,
     };
-    setItems(dados);
+
+    setItems([...items, dados]);
   }
 
   return (
@@ -71,17 +62,9 @@ function Result(props) {
           <button className={styles.btnPlayList} onClick={searchPlayList}>
             Abrir Playlist
           </button>
-          <ul className={styles.listMusic}>
-            {music.map((result, index) => {
-              return (
-                <li key={index}>
-                  <a href={result.url.toString()} target="_blank">
-                    <BsFileEarmarkMusic /> {result.title}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+
+          <MusicPlayer music={music}></MusicPlayer>
+
           {showList ? (
             <div className={styles.contentSalve}>
               <Link to="list-music" className={styles.salveList}>
