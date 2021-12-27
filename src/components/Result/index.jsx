@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
-import { BsFileEarmarkMusic } from "react-icons/bs";
 import { ItemsContext } from "../Context/index";
 import { MusicPlayer } from "../MusicPlayer/index";
 
@@ -41,9 +40,8 @@ function Result(props) {
 
     let dados = {
       temperatura: Math.round(props.weather.main.temp),
-      music: music.map((result) => {
-        return "Url: " + result.url + " Título: " + result.title;
-      }),
+      city: props.weather.name,
+      music: music,
       today: day + "/" + month + "/" + ano,
     };
 

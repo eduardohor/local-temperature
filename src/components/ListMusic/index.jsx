@@ -11,17 +11,26 @@ export function ListMusic() {
   const [today, setToday] = useState([]);
 
   return (
-    <div>
+    <>
       <h1>Listas Salvas</h1>
-      <div>
+      <hr/>
+      <div className={styles.contentList}>
         {items.map((result, index) => {
           return (
-            <li key={index}>
-              {"Temperatura: " + result.temperatura + " Data: " + result.today}
-            </li>
+            <ul key={index} className={styles.listItems}>
+              <li>{"Local: " + result.city}</li>
+              <li>
+                {"Temperatura: " + result.temperatura} <code>&deg;</code>C
+              </li>
+              <li>{" Data: " + result.today}</li>
+              <li className={styles.ListMusic}>
+                Lista de Músicas:{" "}
+                <MusicPlayer music={result.music}></MusicPlayer>
+              </li>
+            </ul>
           );
         })}
       </div>
-    </div>
+    </>
   );
 }
