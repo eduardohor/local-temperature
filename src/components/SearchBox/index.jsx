@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.scss";
-import Result from "../Result/index";
+
+import { ResultListMusic } from "../ResultListMusic/index";
 
 export function SearchBox() {
   const [city, setCity] = useState("");
   const [weather, setWeather] = useState(null);
   const [sound, setSound] = useState("");
-  const [search, setSearch] = useState("");
   const [tracks, setTracks] = useState([]);
 
   function handleChange(event) {
@@ -40,7 +41,6 @@ export function SearchBox() {
 
   function testTemperature(temp) {
     let tempCurrent = temp.main.temp;
-    // let textSound;
 
     if (tempCurrent >= 32) {
       setSound("um Rock");
@@ -76,9 +76,12 @@ export function SearchBox() {
           >
             Buscar
           </button>
+          <Link to="list-music" className={styles.salveList}>
+            Listas Salvas
+          </Link>
         </div>
 
-        <Result weather={weather} sound={sound} tracks={tracks} />
+        <ResultListMusic weather={weather} sound={sound} tracks={tracks} />
       </form>
     </div>
   );

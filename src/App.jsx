@@ -2,7 +2,7 @@ import { SearchBox } from "./components/SearchBox/index";
 import { ListMusic } from "./components/ListMusic/index";
 import styles from "./styles/App.module.scss";
 
-import { ItemsProvider } from "./components/Context/index";
+import { ItemsProvider } from "./components/Context/ItemsProvider";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 

@@ -5,12 +5,13 @@ body{
 }
 .contentWrapper{
   width: 700px;
-  height: 600px;
+  height: 95vh;
   padding-top: 10px;
   margin-top: 10px;
   border-radius: 10px;
   overflow:auto;
   box-shadow: 0 0 20px #cccccc;
+  position: relative;
 
   h1{
     text-align: center;

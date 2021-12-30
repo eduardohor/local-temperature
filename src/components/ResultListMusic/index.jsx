@@ -1,10 +1,11 @@
 import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+
 import styles from "./styles.module.scss";
-import { ItemsContext } from "../Context/index";
+
+import { ItemsContext } from "../Context/ItemsProvider";
 import { MusicPlayer } from "../MusicPlayer/index";
 
-function Result(props) {
+export function ResultListMusic(props) {
   const [music, setMusic] = useState([]);
   const [showList, setShowList] = useState(false);
 
@@ -65,10 +66,6 @@ function Result(props) {
 
           {showList ? (
             <div className={styles.contentSalve}>
-              <Link to="list-music" className={styles.salveList}>
-                Listas Salvas
-              </Link>
-
               <button className={styles.btnSalve} onClick={salvedList}>
                 Salvar dados
               </button>
@@ -79,5 +76,3 @@ function Result(props) {
     </div>
   );
 }
-
-export default Result;

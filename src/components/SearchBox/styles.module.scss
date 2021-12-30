@@ -19,13 +19,27 @@
   
     .btSearch{
       margin-left: 15px;
-      width: 50px;
-      height: 30px;
+      padding:8px;
       border: none;
       background: #cccccc;
       border-radius: 6px;
       cursor: pointer;
     }
+
+    .salveList{
+      text-decoration: none;
+      color: black;
+      display:inline-block;
+      font-size: 14px;
+      margin-left: 15px;
+      padding:8px;
+      background: #cccccc;
+      border-radius: 6px;
+      cursor: pointer;
+
+
+
+    } 
   }
 
 

@@ -1,19 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
+import { IoChevronBackCircleSharp } from "react-icons/io5";
 import styles from "./styles.module.scss";
 
-import { ItemsContext } from "../Context/index";
+import { ItemsContext } from "../Context/ItemsProvider";
 import { MusicPlayer } from "../MusicPlayer/index";
+import { Link } from "react-router-dom";
 
 export function ListMusic() {
   const [items, setItems] = useContext(ItemsContext);
-  const [temp, setTemp] = useState([]);
-  const [listMusic, setListMusic] = useState([]);
-  const [today, setToday] = useState([]);
 
   return (
     <>
       <h1>Listas Salvas</h1>
-      <hr/>
+      <Link to="/">
+        <IoChevronBackCircleSharp className={styles.btnBack} />
+      </Link>
+      <hr />
       <div className={styles.contentList}>
         {items.map((result, index) => {
           return (
