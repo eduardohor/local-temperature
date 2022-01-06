@@ -23,3 +23,29 @@ body{
   }
 
 }
+
+@media screen and (max-width:610px) {
+
+ .contentWrapper{
+   width:80vh;
+   
+ }
+}
+
+@media screen and (max-width:425px){
+  *{
+    font-size:20px;
+  }
+  .contentWrapper{
+    width:60vh;
+
+  }
+}
+
+@media screen and (max-width:320px){
+  .contentWrapper{
+    width:50vh;
+
+
+  }
+}
