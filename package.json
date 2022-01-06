@@ -1,7 +1,7 @@
 {
   "name": "local-temperature",
   "version": "0.0.0",
-  "homepage":"github-page/",
+  "homepage":"https://eduardohor.github.io/local-temperature/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
