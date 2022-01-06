@@ -70,13 +70,13 @@ export function SearchBox() {
             value={city}
           />
           <button
-            className={styles.btSearch}
+            className={styles.btnSearch}
             type="submit"
             onClick={handleSearch}
           >
             Buscar
           </button>
-          <Link to="list-music" className={styles.salveList}>
+          <Link to="list-music" className={styles.btnSalveList}>
             Listas Salvas
           </Link>
         </div>

@@ -4,12 +4,13 @@ import styles from "./styles.module.scss";
 
 import { ItemsContext } from "../Context/ItemsProvider";
 import { MusicPlayer } from "../MusicPlayer/index";
+import { Modal } from "../Modal/index";
 
 export function ResultListMusic(props) {
   const [music, setMusic] = useState([]);
   const [showList, setShowList] = useState(false);
-
   const [items, setItems] = useContext(ItemsContext);
+  const [showModal, setShowModal] = useState(false);
 
   function searchPlayList(event) {
     event.preventDefault();
@@ -36,17 +37,22 @@ export function ResultListMusic(props) {
     event.preventDefault();
     let today = new Date();
     let day = today.getDate();
-    let month = today.getMonth();
+    let month = today.getMonth() + 1;
     let ano = today.getFullYear();
 
     let dados = {
       temperatura: Math.round(props.weather.main.temp),
       city: props.weather.name,
       music: music,
-      today: day + "/" + month + "/" + ano,
+      date: day + "/" + month + "/" + ano,
     };
 
     setItems([...items, dados]);
+    setShowModal(true);
+  }
+
+  function onHideModal() {
+    setShowModal(false);
   }
 
   return (
@@ -61,18 +67,20 @@ export function ResultListMusic(props) {
           <button className={styles.btnPlayList} onClick={searchPlayList}>
             Abrir Playlist
           </button>
-
-          <MusicPlayer music={music}></MusicPlayer>
-
-          {showList ? (
-            <div className={styles.contentSalve}>
-              <button className={styles.btnSalve} onClick={salvedList}>
-                Salvar dados
-              </button>
-            </div>
-          ) : null}
         </div>
       ) : null}
+
+      <MusicPlayer music={music}></MusicPlayer>
+
+      {showList ? (
+        <div className={styles.contentSalve}>
+          <button className={styles.btnSalve} onClick={salvedList}>
+            Salvar dados
+          </button>
+        </div>
+      ) : null}
+
+      <Modal show={showModal} onHideModal={onHideModal}></Modal>
     </div>
   );
 }

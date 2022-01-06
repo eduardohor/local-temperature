@@ -1,5 +1,5 @@
 import { SearchBox } from "./components/SearchBox/index";
-import { ListMusic } from "./components/ListMusic/index";
+import { ListSave } from "./components/ListSave/index";
 import styles from "./styles/App.module.scss";
 
 import { ItemsProvider } from "./components/Context/ItemsProvider";
@@ -17,8 +17,8 @@ export function App() {
             <Route exact path="/" component={SearchBox}>
               <SearchBox />
             </Route>
-            <Route path="/list-music" component={ListMusic}>
-              <ListMusic />
+            <Route path="/list-music" component={ListSave}>
+              <ListSave />
             </Route>
             <Route path="*">
               <div className={styles.noRoute}>Essa rota não existe</div>

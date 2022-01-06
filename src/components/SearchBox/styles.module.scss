@@ -10,24 +10,31 @@
     align-items: center;
 
     .txtBusca{
-      width: 400px;
+      width: 60%;
       height: 30px;
       padding: 4px;
       border: none;
       box-shadow: 0 0 20px #cccccc;
     }
   
-    .btSearch{
+    .btnSearch{
       margin-left: 15px;
       padding:8px;
       border: none;
       background: #cccccc;
       border-radius: 6px;
       cursor: pointer;
+      transition-duration: 0.4s;
     }
-
-    .salveList{
+    
+    .btnSearch:hover{
+      background: #a1a1a1;
+      
+    }
+    
+    .btnSalveList{
       text-decoration: none;
+      text-align: center;
       color: black;
       display:inline-block;
       font-size: 13px;
@@ -35,11 +42,12 @@
       padding:8px;
       background: #cccccc;
       border-radius: 6px;
-      cursor: pointer;
-
-
-
+      cursor: pointer; 
     } 
+
+    .btnSalveList:hover{
+      background: #a1a1a1;
+    }
   }
 
 
