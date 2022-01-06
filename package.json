@@ -1,11 +1,12 @@
 {
   "name": "local-temperature",
   "version": "0.0.0",
-  "homepage":"https://eduardohor.github.io/local-temperature/",
+  "homepage": "https://eduardohor.github.io/local-temperature/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "publicar": "npm run build && ./node_modules/.bin/gh-pages -d build"
   },
   "dependencies": {
     "axios": "^0.24.0",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.0",
     "dotenv": "^10.0.0",
+    "gh-pages": "^3.2.3",
     "vite": "^2.6.4"
   }
 }
